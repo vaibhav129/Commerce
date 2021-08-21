@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watchlist</title>
+</head>
+<div class="alert alert-primary" role="alert">
+  Added to watchlist
+</div>
+<body>
+<h1>cart</h1>
+ {% if i.image %}
+<img width="200px" src="{% if i.image %} {{ i.image }} {% else %}
+                    https://sjkelectrical.com.my/img/default-image.jpg
+                    {% endif %}" alt="listing  image" >
+         {% endif %}
+ <h1>{{i.title}}</h1>
+      <p>{{i.bid}}</p>
+      <h2>{{i.describe}}</h2>
+       <p>category:{{i.category}}</p>
+<a href="{% url 'update'  %}" class="btn btn-danger btn-lg" name="remove">Watchlist</a>
+<a href="{% url 'index'   %}"><h5 class="card-header h5">go back</h5></a>
+</body>
+</html>

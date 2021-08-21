@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watchlist</title>
+</head>
+<body>
+ {% if present %}
+            {% for item in product_list %}
+                 {% if item.image %}
+ <img width="200px" src="{% if item.image %} {{ item.image }} {% else %}
+                    https://sjkelectrical.com.my/img/default-image.jpg
+                    {% endif %}" alt="listing  image" >
+         {% endif %}
+
+                <br> <br>
+                <div class="card text-left">
+                    <a href="{% url 'watchlist' item.id %}" class="btn btn-danger btn-lg" name="remove" >Remove from Watchlist</a>
+                    <a href="{% url 'index'   %}"><h5 class="card-header h5">go back</h5></a>
+                    <p>{{item.bid}}</p>
+                    <h2>{{item.describe}}</h2>
+       <p>category:{{i.category}}</p>
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.describe}}</h5>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="text-center">
+                <br> <br>
+                <p class="lead">No Listings Found</p>
+            </div>
+        {% endif %}
+</body>
+</html>

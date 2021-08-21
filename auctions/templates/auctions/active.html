@@ -1,0 +1,14 @@
+{% extends "auctions/layout.html" %}
+
+
+{% block body %}
+{% for product in all %}
+      <h1>{{product.title}}</h1>
+     <h2>{{product.describe}}</h2>
+     <p>{{product.bid}}</p>
+      <p>{{product.category}}</p>
+<img width="200px" src="{% if product.image %} {{ product.image }} {% else %}
+                    https://sjkelectrical.com.my/img/default-image.jpg
+                    {% endif %}" alt="listing  image" >
+{% endfor %}
+{% endblock %}

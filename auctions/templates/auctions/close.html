@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>won</title>
+</head>
+<body>
+<strong>CLOSEDBIDS</strong>
+ {% if empty %}
+ <h3>No Closed Listings available</h3>
+ {% else %}
+
+{% for i in winner %}
+<p>owner:{{i.user}}</p>
+<p>{{i.title}}</p>
+<p>{{i.bidprice}}</p>
+<img width="200px" src="{% if i.image1 %} {{ i.image1 }} {% else %}
+                    https://sjkelectrical.com.my/img/default-image.jpg
+                    {% endif %}" alt="listing  image" >
+{% for k in ok %}
+<p>winner:{{k.user}}</p>
+{% endfor %}
+{% endfor %}
+
+{% endif %}
+<a href="{%  url 'index' %}">GO back </a>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watchlist</title>
+</head>
+<body>
+{% for k in ok %}
+ <p>winner:{{k.user}}</p>
+{% endfor %}
+ {% for i in auctions  %}
+
+ {% if i.image %}
+<img width="200px" src="{% if i.image %} {{ i.image }} {% else %}
+                    https://sjkelectrical.com.my/img/default-image.jpg
+                    {% endif %}" alt="listing  image" >
+         {% endif %}
+ <h1>Title:{{i.title}}</h1>
+  <p>Owner:{{i.user}}</p>
+      <p>Bid:{{i.bid}}</p>
+      <h2>Describe:{{i.describe}}</h2>
+       <p>category:{{i.category}}</p>
+ <form method="post" action="{% url 'watchlist' i.id   %}">
+     {% csrf_token %}
+     <input type="submit" value="ADD to watchlist">
+ </form>
+  {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+      </div>
+    {% endif %}
+  <form action="{% url 'bids' i.id %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input class="form-control" type="text" name="new" placeholder="Your Bid">
+                </div>
+                <p align="justify"><input class="btn btn-primary" type="submit"></p>
+            </form>
+ {% if i.user == request.user %}
+<a href="{%  url 'close' i.id %}">close bid</a>
+{% endif %}
+
+  <h2 class="card-title h2">ADD COMMENT</h2>
+
+                <form action="{% url 'comments' i.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <textarea class="form-control" name="commentsa" rows="4" placeholder=" Comment"></textarea>
+                    </div>
+                    <p align="justify"><input class="btn btn-primary" type="submit" value="Submit"></p>
+                </form>
+            </div>
+
+ {% if commente %}
+
+                {% for a in commente %}
+                    <br>
+                    <h5 class="card-header h5">{{a.user}}</h5>
+                        <p class="lead">{{a.commentsa}}</p>
+                {% endfor %}
+
+            {% else %}
+                <div class="text-center">
+                    <br> <br>
+                    <p class="lead">No Comments</p>
+                </div>
+            {% endif %}
+        </div>
+{% endfor %}
+<a href="{% url 'index'   %}"><h5 class="card-header h5">go back</h5></a>
+
+</body>
+</html>

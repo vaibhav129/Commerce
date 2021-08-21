@@ -1,0 +1,16 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h1>Active Listings</h1>
+  {% for i in ima %}
+                    <a href="{%  url 'watch' i.id %}"><img width="300px" src="{% if i.image %} {{ i.image }} {% else %}
+                    https://sjkelectrical.com.my/img/default-image.jpg
+                    {% endif %}" alt="listing  image" ></a>
+                {% endfor %}
+<h1>Closed Listings</h1>
+ {% for k in ik %}
+<a href="{%  url 'win' k.title %}"><img width="200px" src="{% if k.image1 %} {{ k.image1 }} {% else %}
+                    https://sjkelectrical.com.my/img/default-image.jpg
+                    {% endif %}" alt="listing  image" ></a>
+       {% endfor %}
+{% endblock %}
