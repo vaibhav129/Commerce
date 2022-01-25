@@ -1,5 +1,5 @@
 # Commerce
-Project video -[YOUTUBE](https://www.youtube.com/watch?v=GSY0CIAYL8E&list=LLX-5PnWWxazxQJNUsFYqwow&index=9)
+Project video -[YOUTUBE](https://www.youtube.com/watch?v=-WXt7YPnn-U)
 ### Main Objectives
 * Creating Models in Django
 * Lettings logged-in/out users see different things
